@@ -71,8 +71,12 @@ if __name__ != "sverchok":
 
 from sverchok.core import sv_registration_utils, init_architecture, make_node_list
 from sverchok.core import reload_event, handle_reload_event
-from sverchok.utils import utils_modules
+from sverchok.utils import utils_modules, sv_bgl_test
 from sverchok.ui import ui_modules
+
+available_gfx_module = sv_bgl_test.check_bgl_availability()
+print("graphics " + "v279" if available_gfx_module else "v280", available_gfx_module)
+
 
 imported_modules = init_architecture(__name__, utils_modules, ui_modules)
 node_list = make_node_list(nodes)
